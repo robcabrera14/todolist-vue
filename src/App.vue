@@ -6,7 +6,7 @@
   </FilterSearchContainer>
   <TodoMessage />
   <TodoList>
-    <TodoItem v-for="todo in todos" :key="todo.id" :todo="todo" />
+    <TodoItem v-for="todo in todos" :key="todo.id" :todo="todo" @delete-todo="deleteTodo" />
   </TodoList>
   <TodoForm />
 </template>
@@ -42,6 +42,11 @@ export default {
     TodoList,
     TodoItem,
     TodoForm,
+  },
+  methods: {
+    deleteTodo(id) {
+      this.todos = this.todos.filter(todo => todo.id !== id);
+    },
   },
 };
 </script>

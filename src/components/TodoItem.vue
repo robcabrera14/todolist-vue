@@ -7,7 +7,7 @@
       <input type="checkbox" name="" :id="todo.id" class="todo-check" />
       <p class="todo-text">{{ todo.title }}</p>
     </div>
-    <button class="todo-delete-btn">
+    <button class="todo-delete-btn" @click="$emit('delete-todo', todo.id)">
       <FontAwesomeIcon icon="fa-solid fa-trash" />
     </button>
   </li>
@@ -20,5 +20,6 @@ export default {
       type: Object,
     },
   },
+  emits: ['delete-todo'],
 };
 </script>
