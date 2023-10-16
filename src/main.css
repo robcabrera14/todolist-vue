@@ -152,6 +152,14 @@ button {
   display: none;
 }
 
+.todo-check:checked ~ .todo-check-label {
+  background-color: var(--green-clr-1);
+}
+
+.todo-check:checked ~ .todo-text {
+  text-decoration: 2px line-through;
+}
+
 .todo-check-label {
   display: block;
   height: 2rem;
