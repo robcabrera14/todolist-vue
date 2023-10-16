@@ -1,3 +1,11 @@
 <template>
-  <p class="todo-message">You have 5 todos left!</p>
+  <p class="todo-message">You have {{ todosLeft }} todos left!</p>
 </template>
+
+<script>
+export default {
+  props: {
+    todosLeft: String,
+  },
+};
+</script>

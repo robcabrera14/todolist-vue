@@ -4,7 +4,7 @@
     <SearchInput />
     <FilterContainer />
   </FilterSearchContainer>
-  <TodoMessage />
+  <TodoMessage :todosLeft="todosLeft" />
   <TodoList>
     <TodoItem v-for="todo in todos" :key="todo.id" :todo="todo" @delete-todo="deleteTodo" @check-todo="checkTodo" />
   </TodoList>
@@ -22,6 +22,16 @@ import TodoItem from './components/TodoItem';
 import TodoForm from './components/TodoForm';
 
 export default {
+  components: {
+    SearchInput,
+    FilterContainer,
+    FilterSearchContainer,
+    TheHeading,
+    TodoMessage,
+    TodoList,
+    TodoItem,
+    TodoForm,
+  },
   data() {
     return {
       todos: [
@@ -33,15 +43,10 @@ export default {
       ],
     };
   },
-  components: {
-    SearchInput,
-    FilterContainer,
-    FilterSearchContainer,
-    TheHeading,
-    TodoMessage,
-    TodoList,
-    TodoItem,
-    TodoForm,
+  computed: {
+    todosLeft() {
+      return this.todos.filter(todo => !todo.isCompleted).length;
+    },
   },
   methods: {
     deleteTodo(id) {
