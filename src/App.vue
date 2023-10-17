@@ -35,7 +35,7 @@ export default {
   data() {
     return {
       query: '',
-      filter: 'uncompleted',
+      filter: 'all',
       todos: [
         { id: 1, title: 'Learn HTML', isCompleted: false },
         { id: 2, title: 'Learn CSS', isCompleted: false },
