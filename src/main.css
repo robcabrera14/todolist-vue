@@ -108,6 +108,10 @@ button {
   display: none;
 }
 
+.filter-list.show {
+  display: block;
+}
+
 .filter-item {
   padding: 1rem;
   border-bottom: 1px solid var(--gray-clr-1);

@@ -1,12 +1,12 @@
 <template>
   <TheHeading />
   <FilterSearchContainer>
-    <SearchInput />
-    <FilterContainer />
+    <SearchInput @search-todo="searchTodo" />
+    <FilterContainer @filter-todo="filterTodo" />
   </FilterSearchContainer>
   <TodoMessage :todosLeft="todosLeft" />
   <TodoList>
-    <TodoItem v-for="todo in todos" :key="todo.id" :todo="todo" @delete-todo="deleteTodo" @check-todo="checkTodo" />
+    <TodoItem v-for="todo in filteredTodos" :key="todo.id" :todo="todo" @delete-todo="deleteTodo" @check-todo="checkTodo" />
   </TodoList>
   <TodoForm @add-todo="addTodo" />
 </template>
@@ -34,7 +34,8 @@ export default {
   },
   data() {
     return {
-      title: '',
+      query: '',
+      filter: 'uncompleted',
       todos: [
         { id: 1, title: 'Learn HTML', isCompleted: false },
         { id: 2, title: 'Learn CSS', isCompleted: false },
@@ -48,8 +49,26 @@ export default {
     todosLeft() {
       return this.todos.filter(todo => !todo.isCompleted).length;
     },
+    filteredTodos() {
+      return this.todos.filter(todo => {
+        const text = todo.title.toLowerCase().includes(this.query);
+        if (this.filter && this.filter === 'completed') {
+          return todo.isCompleted && text;
+        } else if (this.filter && this.filter === 'uncompleted') {
+          return !todo.isCompleted && text;
+        } else {
+          return text;
+        }
+      });
+    },
   },
   methods: {
+    searchTodo(event) {
+      this.query = event.target.value.toLowerCase();
+    },
+    filterTodo(text) {
+      this.filter = text;
+    },
     addTodo(todo) {
       this.todos.push(todo);
     },
