@@ -37,6 +37,12 @@ body {
   border-radius: 0.5rem;
 }
 
+@media screen and (max-width: 810px) {
+  #app {
+    margin: 1rem;
+  }
+}
+
 ul {
   list-style: none;
 }
