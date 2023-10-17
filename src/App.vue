@@ -8,7 +8,7 @@
   <TodoList>
     <TodoItem v-for="todo in todos" :key="todo.id" :todo="todo" @delete-todo="deleteTodo" @check-todo="checkTodo" />
   </TodoList>
-  <TodoForm />
+  <TodoForm @add-todo="addTodo" />
 </template>
 
 <script>
@@ -34,6 +34,7 @@ export default {
   },
   data() {
     return {
+      title: '',
       todos: [
         { id: 1, title: 'Learn HTML', isCompleted: false },
         { id: 2, title: 'Learn CSS', isCompleted: false },
@@ -49,6 +50,9 @@ export default {
     },
   },
   methods: {
+    addTodo(todo) {
+      this.todos.push(todo);
+    },
     deleteTodo(id) {
       this.todos = this.todos.filter(todo => todo.id !== id);
     },

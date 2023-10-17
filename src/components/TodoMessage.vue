@@ -5,7 +5,7 @@
 <script>
 export default {
   props: {
-    todosLeft: String,
+    todosLeft: Number,
   },
 };
 </script>
