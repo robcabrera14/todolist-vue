@@ -36,13 +36,7 @@ export default {
     return {
       query: '',
       filter: 'all',
-      todos: [
-        { id: 1, title: 'Learn HTML', isCompleted: false },
-        { id: 2, title: 'Learn CSS', isCompleted: false },
-        { id: 3, title: 'Learn JS', isCompleted: false },
-        { id: 4, title: 'Learn PHP', isCompleted: false },
-        { id: 5, title: 'Learn SQL', isCompleted: false },
-      ],
+      todos: [],
     };
   },
   computed: {
